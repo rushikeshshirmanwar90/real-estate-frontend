@@ -8,6 +8,7 @@ import { Ruler } from "lucide-react"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import Image from "next/image"
 
 interface OtherSection {
   _id: string
@@ -35,10 +36,12 @@ export function OtherSectionDetails({ otherSection }: { otherSection: OtherSecti
         >
           {otherSection?.images?.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
+              <Image
                 src={image || "/placeholder.svg"}
                 alt={`${otherSection.name} - Image ${index + 1}`}
                 className="h-full w-full object-cover"
+                width={500}
+                height={200}
               />
             </SwiperSlide>
           ))}

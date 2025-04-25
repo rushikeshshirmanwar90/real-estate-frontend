@@ -9,6 +9,7 @@ import { Home, Ruler, Video } from "lucide-react"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import Image from "next/image"
 
 interface FlatInfo {
   title: string
@@ -100,10 +101,12 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
                 >
                   {flat.images.map((image, index) => (
                     <SwiperSlide key={index}>
-                      <img
+                      <Image
                         src={image || "/placeholder.svg"}
                         alt={`${flat.title} - Image ${index + 1}`}
                         className="h-full w-full object-cover"
+                        width={500}
+                        height={300}
                       />
                     </SwiperSlide>
                   ))}

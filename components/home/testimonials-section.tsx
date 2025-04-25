@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -11,7 +11,7 @@ import img4 from "@/assets/reviews/user-4.jpeg"
 
 
 export function TestimonialsSection() {
-  const testimonials = [
+  const testimonials = useMemo(() => [
     {
       id: 1,
       name: "Amit Joshi",
@@ -44,7 +44,7 @@ export function TestimonialsSection() {
       rating: 5,
       text: "Living at Riverside Residency has been a wonderful experience. The community, facilities, and serene environment make it feel like a resort. The maintenance team is prompt and efficient.",
     },
-  ]
+  ], [])
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [visibleTestimonials, setVisibleTestimonials] = useState([testimonials[0]])
@@ -73,7 +73,7 @@ export function TestimonialsSection() {
     handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
-  }, [currentIndex])
+  }, [currentIndex, testimonials])
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)

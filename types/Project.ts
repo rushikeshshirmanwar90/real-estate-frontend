@@ -5,7 +5,7 @@ type ProjectType = "ongoing" | "upcoming" | "completed";
 export interface Section {
   sectionId: string;
   name: string;
-  type: "building" | "row house" | "other";
+  type: "Buildings" | "row house" | "other";
 }
 
 export interface ProjectMini {
@@ -18,8 +18,6 @@ export interface ProjectMini {
   projectType: ProjectType;
   section: Section[];
 }
-
-
 
 export interface Project {
   _id: string;
@@ -36,4 +34,3 @@ export interface Project {
   section: Section[];
   amenities: Amenity[];
 }
-

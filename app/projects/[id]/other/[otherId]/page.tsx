@@ -46,7 +46,7 @@ const OtherSectionPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-emerald-50 to-lime-50">
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-emerald-800 mb-4">Section Not Found</h1>
-          <p className="text-gray-600 mb-6">The section you're looking for doesn't exist or has been removed.</p>
+          <p className="text-gray-600 mb-6">The section you&apos;re looking for doesn&apos;t exist or has been removed.</p>
           <Link
             href={`/projects/${params.id}`}
             className="inline-flex items-center px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition-colors"

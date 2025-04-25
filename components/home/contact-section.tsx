@@ -39,7 +39,7 @@ export function ContactSection() {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Have questions or need more information? Reach out to our team and we'll be happy to assist you.
+            Have questions or need more information? Reach out to our team and we&#39;ll be happy to assist you.
           </p>
         </div>
 

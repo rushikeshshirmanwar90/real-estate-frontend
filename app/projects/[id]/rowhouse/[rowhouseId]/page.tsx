@@ -7,7 +7,7 @@ import axios from "axios"
 import { RowHouseDetails } from "@/components/rowhouse/rowhouse-details"
 import { RowHouseAmenities } from "@/components/rowhouse/rowhouse-amenities"
 import { RowHouse } from "@/types/RowHouse"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 const RowHousePage = () => {
 
@@ -19,7 +19,7 @@ const RowHousePage = () => {
   const [rowHouse, setRowHouse] = useState<RowHouse>();
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const res = await axios.get(`http://localhost:8080/api/rowHouse`, {
       params: { id }
     });
@@ -27,16 +27,16 @@ const RowHousePage = () => {
     const data = res.data.data;
 
     console.log("working");
-    console.log(data)
+    console.log(data);
 
     setRowHouse(data);
     setLoading(false);
-  }
+  }, [id]);
 
 
   useEffect(() => {
     fetchData();
-  }, [id, loading])
+  }, [fetchData, loading])
 
 
 
@@ -45,7 +45,7 @@ const RowHousePage = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-50 to-orange-50">
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-amber-800 mb-4">Row House Not Found</h1>
-          <p className="text-gray-600 mb-6">The row house you're looking for doesn't exist or has been removed.</p>
+          <p className="text-gray-600 mb-6">The row house you&#39;re looking for doesn&#39;t exist or has been removed.</p>
           <Link
             href={`/projects/${params.id}`}
             className="inline-flex items-center px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors"

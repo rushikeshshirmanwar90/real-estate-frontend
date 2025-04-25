@@ -1,5 +1,5 @@
 import type React from "react"
-import { Wifi, Car, Dumbbell, Droplet, Shield, TreePine, type LightbulbIcon as LucideProps } from "lucide-react"
+import { Wifi, Car, Dumbbell, Droplet, Shield, TreePine } from "lucide-react"
 
 interface Amenity {
   icon: string
@@ -8,7 +8,7 @@ interface Amenity {
 
 export function ProjectAmenities({ amenities }: { amenities?: Amenity[] }) {
   const getIcon = (iconName: string): React.ReactNode => {
-    const iconProps: LucideProps = { className: "h-6 w-6" }
+    const iconProps: React.SVGProps<SVGSVGElement> = { className: "h-6 w-6" }
 
     switch (iconName.toLowerCase()) {
       case "wifi":

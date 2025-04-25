@@ -1,5 +1,6 @@
 import type React from "react"
-import { Flower2, Car, TreePine, Shield, Sun, Droplets, type LightbulbIcon as LucideProps } from "lucide-react"
+import { Flower2, Car, TreePine, Shield, Sun, Droplets } from "lucide-react"
+import type { LucideProps } from "lucide-react"
 
 interface Amenity {
   icon: string

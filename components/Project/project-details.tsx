@@ -9,11 +9,13 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 interface Section {
   sectionId: string;
   name: string;
-  type: "building" | "row house" | "other";
+  type: "Buildings" | "row house" | "other"
+
 }
 
 interface Amenity {
@@ -81,10 +83,12 @@ export function ProjectDetails({ project }: { project: Project | undefined }) {
         >
           {project.images.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
+              <Image
                 src={image || "/placeholder.svg"}
                 alt={`${project.name} - Image ${index + 1}`}
                 className="h-full w-full object-cover"
+                width={500}
+                height={200}
               />
             </SwiperSlide>
           ))}

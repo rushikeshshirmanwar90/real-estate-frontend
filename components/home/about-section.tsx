@@ -36,7 +36,7 @@ export function AboutSection() {
             <h3 className="text-2xl font-bold text-gray-800">Our Vision & Mission</h3>
             <p className="text-gray-600">
               At RealEstate, we believe in creating living spaces that inspire. Our journey began in 2008 with a simple
-              vision: to build homes that people would love to live in. Today, we've expanded our horizons to develop
+              vision: to build homes that people would love to live in. Today, we&#39;ve expanded our horizons to develop
               commercial spaces, townships, and luxury villas across the country.
             </p>
 

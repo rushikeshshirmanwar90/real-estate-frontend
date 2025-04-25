@@ -1,5 +1,6 @@
 import type React from "react"
-import { CableCarIcon as Elevator, Power, Droplet, Flame, type LightbulbIcon as LucideProps } from "lucide-react"
+import { CableCarIcon as Elevator, Power, Droplet, Flame } from "lucide-react"
+import type { LucideProps } from "lucide-react"
 
 interface Amenity {
   icon: string

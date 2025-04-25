@@ -8,6 +8,7 @@ import { Ruler, Home } from "lucide-react"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import Image from "next/image"
 
 interface BuildingSection {
   name: string
@@ -59,10 +60,12 @@ export function BuildingDetails({ building }: { building: Building }) {
         >
           {building?.images?.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
+              <Image
                 src={image || "/placeholder.svg"}
                 alt={`${building?.name} - Image ${index + 1}`}
                 className="h-full w-full object-cover"
+                width={500}
+                height={200}
               />
             </SwiperSlide>
           ))}

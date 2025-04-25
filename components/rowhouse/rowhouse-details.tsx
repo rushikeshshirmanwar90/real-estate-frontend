@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import Image from "next/image"
 
 interface Amenity {
   icon: string
@@ -47,10 +48,12 @@ export function RowHouseDetails({ rowHouse }: { rowHouse: RowHouse }) {
         >
           {rowHouse?.images?.map((image, index) => (
             <SwiperSlide key={index}>
-              <img
+              <Image
                 src={image || "/placeholder.svg"}
                 alt={`${rowHouse.name} - Image ${index + 1}`}
                 className="h-full w-full object-cover"
+                width={500}
+                height={200}
               />
             </SwiperSlide>
           ))}

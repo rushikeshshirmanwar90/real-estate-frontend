@@ -40,7 +40,7 @@ const ProjectPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-purple-50 to-pink-50">
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-purple-800 mb-4">Project Not Found</h1>
-          <p className="text-gray-600 mb-6">The project you're looking for doesn't exist or has been removed.</p>
+          <p className="text-gray-600 mb-6">The project you&#39;re looking for doesn&#39;t exist or has been removed.</p>
           <Link
             href="/"
             className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"

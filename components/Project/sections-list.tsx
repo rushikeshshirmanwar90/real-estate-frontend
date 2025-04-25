@@ -2,9 +2,9 @@ import Link from "next/link"
 import { Building, Home, Landmark, ChevronRight } from "lucide-react"
 
 interface Section {
+  type: "Buildings" | "row house" | "other"
   sectionId: string
   name: string
-  type: "Buildings" | "row house" | "other"
 }
 
 export function SectionsList({ sections, projectId, projectName }: { sections?: Section[]; projectId?: string, projectName?: string }) {
