@@ -11,6 +11,7 @@ import { useEffect, useState } from "react"
 import { Building } from "@/types/Building"
 import axios from "axios"
 import { InterestForm } from "@/components/intrested-form"
+import { domain } from "@/domain"
 
 const BuildingPage = () => {
 
@@ -27,7 +28,7 @@ const BuildingPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`http://localhost:8080/api/building`, {
+      const res = await axios.get(`${domain}/api/building`, {
         params: { id }
       })
 

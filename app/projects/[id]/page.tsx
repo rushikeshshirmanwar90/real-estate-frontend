@@ -10,6 +10,7 @@ import { ProjectAmenities } from "@/components/Project/project-amenities"
 import { Project } from "@/types/Project"
 import axios from "axios"
 import { InterestForm } from "@/components/intrested-form"
+import { domain } from "@/domain"
 
 const ProjectPage = () => {
 
@@ -22,7 +23,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await axios.get(`http://localhost:8080/api/project`, {
+      const res = await axios.get(`${domain}/api/project`, {
         params: { id: projectId },
       });
 

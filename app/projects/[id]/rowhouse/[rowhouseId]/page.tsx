@@ -8,6 +8,7 @@ import { RowHouseDetails } from "@/components/rowhouse/rowhouse-details"
 import { RowHouseAmenities } from "@/components/rowhouse/rowhouse-amenities"
 import { RowHouse } from "@/types/RowHouse"
 import { useCallback, useEffect, useState } from "react"
+import { domain } from "@/domain"
 
 const RowHousePage = () => {
 
@@ -20,7 +21,7 @@ const RowHousePage = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
-    const res = await axios.get(`http://localhost:8080/api/rowHouse`, {
+    const res = await axios.get(`${domain}/api/rowHouse`, {
       params: { id }
     });
 

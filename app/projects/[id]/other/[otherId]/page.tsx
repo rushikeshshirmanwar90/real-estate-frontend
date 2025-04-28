@@ -6,6 +6,7 @@ import { OtherSection } from "@/types/Other";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { OtherSectionDetails } from "@/components/other-section-details";
+import { domain } from "@/domain";
 
 const OtherSectionPage = () => {
 
@@ -24,7 +25,7 @@ const OtherSectionPage = () => {
   useEffect(() => {
 
     const fetchData = async () => {
-      const res = await axios.get(`http://localhost:8080/api/otherSection`, {
+      const res = await axios.get(`${domain}/api/otherSection`, {
         params: { id }
       })
 
