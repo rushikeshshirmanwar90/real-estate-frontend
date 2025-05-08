@@ -3,9 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import logo from "@/public/logo-mini.png"
-import Image from "next/image"
-
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,13 +12,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={40}
-              height={40}
-              className="h-20 w-20 rounded-md bg-gradient-to-r"
-            />
+            <div className="h-10 w-10 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+              <span className="text-white font-bold text-xl">RE</span>
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              RealEstate
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

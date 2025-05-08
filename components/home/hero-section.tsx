@@ -10,21 +10,29 @@ import Image from "next/image";
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+
   const slides = [
     {
       image: img1,
       title: "Discover Your Dream Home",
       subtitle: "Luxury Properties in Prime Locations",
+      buttonText: "Explore Now",
+      buttonLink: "#projects"
     },
     {
       image: img2,
       title: "Invest in Your Future",
       subtitle: "High-Value Real Estate Opportunities",
+      buttonText: "Get Started",
+      buttonLink: "#contact"
+
     },
     {
       image: img3,
       title: "Experience Modern Living",
       subtitle: "Contemporary Designs with Premium Amenities",
+      buttonText: "See More",
+      buttonLink: "#projects"
     },
   ]
 
@@ -64,10 +72,10 @@ export function HeroSection() {
           <p className="text-xl md:text-2xl mb-8 text-gray-200">{slides[currentSlide].subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="#projects"
+              href={slides[currentSlide].buttonLink}
               className="px-8 py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium hover:shadow-lg transition-all text-center"
             >
-              Explore Projects
+              {slides[currentSlide].buttonText}
             </Link>
             <Link
               href="#contact"
@@ -93,4 +101,3 @@ export function HeroSection() {
     </section>
   )
 }
-
