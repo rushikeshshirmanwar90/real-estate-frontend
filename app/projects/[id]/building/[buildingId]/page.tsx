@@ -1,15 +1,17 @@
 "use client"
 
+import { useEffect, useState } from "react"
+
 import Link from "next/link"
 import Image from "next/image"
 import { useParams, useSearchParams } from "next/navigation"
 
+import axios from "axios"
+
 import { BuildingDetails } from "@/components/building/building-details"
 import { FlatInfo } from "@/components/building/flat-info"
 import { BuildingAmenities } from "@/components/building/building-amenities"
-import { useEffect, useState } from "react"
 import { Building } from "@/types/Building"
-import axios from "axios"
 import { InterestForm } from "@/components/intrested-form"
 import { domain } from "@/domain"
 
@@ -122,7 +124,7 @@ const BuildingPage = () => {
           <BuildingAmenities amenities={building?.amenities} />
         </div>
         <div className="">
-          <InterestForm buildingName="Home" buildingId="101" />
+          <InterestForm propertyName={building.name} propertyId={building._id} projectName={projectName} interestedType={"building"} />
         </div>
       </div>
     </div>

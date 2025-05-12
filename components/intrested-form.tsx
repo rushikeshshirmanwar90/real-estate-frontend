@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { toast } from "sonner"
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,9 +18,9 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { addInterestedProperty } from "@/functions/intrest"
+import { addLeads } from "@/functions/leads"
 
-export function InterestForm({ buildingName, buildingId }: { buildingName: string, buildingId: string }) {
+export function InterestForm({ propertyName, propertyId, projectName, interestedType }: { propertyName: string, propertyId: string, projectName: string, interestedType: "building" | "rowhouse" }) {
     const [open, setOpen] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [formData, setFormData] = useState({
@@ -49,24 +49,30 @@ export function InterestForm({ buildingName, buildingId }: { buildingName: strin
         try {
             setIsSubmitting(true)
 
-
-            const PropertyDetails = {
-                name: buildingName,
-                id: buildingId
+            const propertyDetails = {
+                propertyName,
+                propertyId
             }
 
-            const user = Cookies.get('user') ? JSON.parse(Cookies.get('user') || '') : null;
-            if (user != null) {
-                await addInterestedProperty(user, PropertyDetails)
+            const userDetails = {
+                name: formData.name,
+                phone: formData.phoneNumber,
+            }
+
+
+            const data = await addLeads(userDetails, projectName, interestedType, propertyDetails)
+            console.log(data);
+
+            if (data) {
+                toast.success("Interest registered!", {
+                    description: "We'll contact you soon with more information.",
+                })
             } else {
-                Cookies.set('user', JSON.stringify(formData), { expires: 7 });
+                toast.error("Something went wrong", {
+                    description: "Please try again later",
+                })
             }
-
-
-            toast.success("Interest registered!", {
-                description: "We'll contact you soon with more information.",
-            })
-
+            
             setFormData({
                 name: "",
                 phoneNumber: "",
@@ -95,7 +101,7 @@ export function InterestForm({ buildingName, buildingId }: { buildingName: strin
                     <DialogHeader>
                         <DialogTitle>Express Interest</DialogTitle>
                         <DialogDescription>
-                            Interested in {buildingName}? Fill in your details below and our team will contact you soon.
+                            Interested in {propertyName}? Fill in your details below and our team will contact you soon.
                         </DialogDescription>
                     </DialogHeader>
                     <form onSubmit={handleSubmit}>
