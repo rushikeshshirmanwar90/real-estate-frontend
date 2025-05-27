@@ -3,45 +3,54 @@ import axios from "axios";
 
 interface userDetailsProps {
   name: string;
-  phone: string;
+  phoneNumber: string;
 }
 
 interface propertyDetailsProps {
-  propertyName: string;
-  propertyId: string;
+  name: string;
+  id: string;
 }
 
 export const addLeads = async (
   userDetails: userDetailsProps,
   projectName: string,
-  interestedType: "rowhouse" | "building",
+  projectType: "rowhouse" | "building",
   propertyDetails: propertyDetailsProps
 ) => {
-  const { name, phone } = userDetails;
+  try {
+    const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-  const clientId = process.env.CLIENT_ID;
+    console.log(clientId);
 
-  const payload = {
-    clientId,
-    name,
-    phone,
-    projectName,
-    interestedType,
-    propertyDetails,
-  };
+    if (!clientId) {
+      throw new Error("CLIENT_ID environment variable is not set");
+    }
 
-  const res = await axios.post(`${domain}/api/leads`, payload, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    const payload = {
+      clientId,
+      projectName,
+      projectType,
+      userDetails,
+      propertyDetails,
+    };
 
-  if (res.status !== 201) {
-    console.error("Error adding lead:", res.data);
-    throw new Error("Failed to add lead");
-  } else {
-    return res.data;
+    console.log("Payload being sent:", payload);
+
+    const response = await axios.post(`${domain}/api/leads`, payload, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const statusCode = error.response?.status;
+      const errorMessage = error.response?.data?.message || error.message;
+      console.error(`API Error (${statusCode}): ${errorMessage}`);
+      throw new Error(`Failed to add lead: ${errorMessage}`);
+    }
+    console.error("Error adding lead:", error);
+    throw error;
   }
 };
-
-

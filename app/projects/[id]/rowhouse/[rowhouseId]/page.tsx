@@ -9,6 +9,7 @@ import { RowHouseAmenities } from "@/components/rowhouse/rowhouse-amenities"
 import { RowHouse } from "@/types/RowHouse"
 import { useCallback, useEffect, useState } from "react"
 import { domain } from "@/domain"
+import { InterestForm } from "@/components/intrested-form"
 
 const RowHousePage = () => {
 
@@ -84,6 +85,11 @@ const RowHousePage = () => {
           <h2 className="text-2xl font-bold mb-6 text-amber-800">Row House Amenities</h2>
           <RowHouseAmenities amenities={rowHouse.amenities} />
         </div>
+
+        <div>
+          <InterestForm propertyName={rowHouse.name} propertyId={rowHouse._id} projectName={projectName} projectType={"rowhouse"} />
+        </div>
+
       </div>
     </div>
   )

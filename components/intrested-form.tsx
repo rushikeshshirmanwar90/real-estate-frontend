@@ -2,10 +2,9 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { toast } from "sonner"
-// import Cookies from 'js-cookie';
-
+import Cookies from 'js-cookie';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -20,13 +19,43 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { addLeads } from "@/functions/leads"
 
-export function InterestForm({ propertyName, propertyId, projectName, interestedType }: { propertyName: string, propertyId: string, projectName: string, interestedType: "building" | "rowhouse" }) {
+
+interface InterestFormProps {
+    propertyName: string
+    propertyId: string
+    projectName: string
+    projectType: "building" | "rowhouse"
+}
+
+export function InterestForm({ propertyName, propertyId, projectName, projectType }: InterestFormProps) {
     const [open, setOpen] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
         phoneNumber: "",
     })
+
+    // Load data from cookies when component mounts or dialog opens
+    useEffect(() => {
+        if (open) {
+            const savedName = Cookies.get('user_name');
+            const savedPhoneNumber = Cookies.get('user_phone');
+
+            if (savedName || savedPhoneNumber) {
+                setFormData({
+                    name: savedName || "",
+                    phoneNumber: savedPhoneNumber || "",
+                });
+
+                // Show a toast to let user know we've pre-filled their info
+                if (savedName && savedPhoneNumber) {
+                    toast.info("Info pre-filled", {
+                        description: "We've filled in your details from last time.",
+                    });
+                }
+            }
+        }
+    }, [open]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -36,58 +65,73 @@ export function InterestForm({ propertyName, propertyId, projectName, interested
         }))
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
+    const handleSubmit = async (e: React.FormEvent): Promise<void> => {
+        e.preventDefault();
 
-        if (!formData.name || !formData.phoneNumber) {
+        // Form validation
+        const { name, phoneNumber } = formData;
+        if (!name?.trim() || !phoneNumber?.trim()) {
             toast.error("Missing information", {
                 description: "Please fill in all fields",
-            })
-            return
+            });
+            return;
+        }
+
+        // Phone number validation (optional)
+        const phoneRegex = /^\+?[0-9]{10,15}$/;
+        if (!phoneRegex.test(phoneNumber.replace(/\s+/g, ''))) {
+            toast.error("Invalid phone number", {
+                description: "Please enter a valid phone number",
+            });
+            return;
         }
 
         try {
-            setIsSubmitting(true)
+            setIsSubmitting(true);
 
-            const propertyDetails = {
-                propertyName,
-                propertyId
-            }
+            const propertyDetails = { name: propertyName, id: propertyId };
+            const userDetails = { name: name.trim(), phoneNumber: phoneNumber.trim() };
 
-            const userDetails = {
-                name: formData.name,
-                phone: formData.phoneNumber,
-            }
+            // Store user details in cookies for future use
+            // Set cookies to expire in 30 days
+            Cookies.set('user_name', name.trim(), { expires: 30 });
+            Cookies.set('user_phone', phoneNumber.trim(), { expires: 30 });
 
+            // Disable form while submitting
+            const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+            if (submitButton) submitButton.disabled = true;
 
-            const data = await addLeads(userDetails, projectName, interestedType, propertyDetails)
+            const data = await addLeads(
+                userDetails,
+                projectName,
+                projectType,
+                propertyDetails
+            );
+
             console.log(data);
 
-            if (data) {
-                toast.success("Interest registered!", {
-                    description: "We'll contact you soon with more information.",
-                })
-            } else {
-                toast.error("Something went wrong", {
-                    description: "Please try again later",
-                })
-            }
-            
-            setFormData({
-                name: "",
-                phoneNumber: "",
-            })
+            // Success handling
+            toast.success("Interest registered!", {
+                description: "We'll contact you soon with more information.",
+            });
 
-            setOpen(false)
-        } catch (error: unknown) {
+            // Reset form (but don't clear cookies)
+            setFormData({ name: "", phoneNumber: "" });
+            setOpen(false);
+
+        } catch (error) {
+            // Error handling with better messages
+            const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+            console.error("Form submission error:", errorMessage);
+
             toast.error("Something went wrong", {
-                description: "Please try again later",
-            })
-            console.log(error);
+                description: "Please try again later. Error: " + errorMessage.slice(0, 50),
+            });
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
-    }
+    };
+
 
     return (
         <div className="fixed bottom-0 py-4  left-0 right-0 flex justify-center bg-white shadow-md z-50">
@@ -133,7 +177,7 @@ export function InterestForm({ propertyName, propertyId, projectName, interested
                                 />
                             </div>
                         </div>
-                        <DialogFooter>
+                        <DialogFooter className="flex flex-col gap-2">
                             <Button type="submit" disabled={isSubmitting} className="bg-teal-600 hover:bg-teal-700 mt-2 w-full">
                                 {isSubmitting ? "Submitting..." : "Submit"}
                             </Button>

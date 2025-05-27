@@ -23,9 +23,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await axios.get(`${domain}/api/project`, {
-        params: { id: projectId },
-      });
+      const res = await axios.get(`${domain}/api/project?clientId=${process.env.NEXT_PUBLIC_CLIENT_ID}&id=${projectId}`,);
 
       const data = res.data;
       setProject(data);
@@ -33,8 +31,6 @@ const ProjectPage = () => {
     }
     fetchProject();
   }, [projectId, loading]);
-
-
 
   if (!project) {
     return (
@@ -84,7 +80,7 @@ const ProjectPage = () => {
         </div>
       </div>
 
-      <InterestForm buildingName="Home" buildingId="1" />
+      <InterestForm projectName="Kameshwari heights" projectType="building" propertyId="1" propertyName="Tower A" />
 
 
     </div>

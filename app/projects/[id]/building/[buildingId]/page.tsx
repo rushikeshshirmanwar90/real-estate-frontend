@@ -124,7 +124,7 @@ const BuildingPage = () => {
           <BuildingAmenities amenities={building?.amenities} />
         </div>
         <div className="">
-          <InterestForm propertyName={building.name} propertyId={building._id} projectName={projectName} interestedType={"building"} />
+          <InterestForm propertyName={building.name} propertyId={building._id} projectName={projectName} projectType={"building"} />
         </div>
       </div>
     </div>

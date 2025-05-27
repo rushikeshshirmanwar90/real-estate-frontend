@@ -11,6 +11,9 @@ import Image from "next/image";
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  
+
+
   const slides = [
     {
       image: img1,
