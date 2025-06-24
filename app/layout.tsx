@@ -35,7 +35,7 @@ export default function RootLayout({
       >
 
         <NextTopLoader
-          color="#2299DD"
+          color="hsl(var(--primary))"
           initialPosition={0.08}
           crawlSpeed={200}
           height={3}
@@ -43,8 +43,8 @@ export default function RootLayout({
           showSpinner={true}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
-          template="linear-gradient(to right, #2299DD, #2299DD)"
+          shadow="0 0 10px hsl(var(--primary)),0 0 5px hsl(var(--primary))"
+          template="linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary)))"
           zIndex={1600}
           showAtBottom={false}
         />

@@ -8,24 +8,24 @@ export function ProjectsHeader() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="h-10 w-10 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+              <div className="h-10 w-10 rounded-md bg-primary flex items-center justify-center">
                 <span className="text-white font-bold text-xl">RE</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-primary">
                 RealEstate
               </span>
             </Link>
             <nav className="hidden md:flex ml-10 space-x-8">
-              <Link href="/" className="text-gray-800 hover:text-indigo-600 font-medium transition-colors">
+              <Link href="/" className="text-gray-800 hover:text-primary font-medium transition-colors">
                 Home
               </Link>
-              <Link href="#projects" className="text-indigo-600 font-medium">
+              <Link href="#projects" className="text-primary font-medium">
                 Projects
               </Link>
-              <Link href="#about" className="text-gray-800 hover:text-indigo-600 font-medium transition-colors">
+              <Link href="#about" className="text-gray-800 hover:text-primary font-medium transition-colors">
                 About
               </Link>
-              <Link href="#contact" className="text-gray-800 hover:text-indigo-600 font-medium transition-colors">
+              <Link href="#contact" className="text-gray-800 hover:text-primary font-medium transition-colors">
                 Contact
               </Link>
             </nav>
@@ -35,13 +35,13 @@ export function ProjectsHeader() {
               <input
                 type="text"
                 placeholder="Search projects..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
             <Link
               href="#contact"
-              className="hidden md:inline-flex ml-4 px-5 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium hover:shadow-lg transition-all"
+              className="hidden md:inline-flex ml-4 px-5 py-2 rounded-md bg-primary text-white font-medium hover:shadow-lg transition-all"
             >
               Contact Us
             </Link>

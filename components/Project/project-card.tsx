@@ -112,7 +112,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-800 mb-2">{project.name}</h3>
         <div className="flex items-center text-gray-600 mb-4">
-          <MapPin size={16} className="mr-1 text-indigo-600" />
+          <MapPin size={16} className="mr-1 text-primary" />
           <span className="text-sm">
             {project.area}, {project.city}, {project.state}
           </span>
@@ -125,9 +125,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <span
                 key={section.sectionId}
                 className={`text-xs px-2 py-1 rounded-md ${section.type === "building"
-                  ? "bg-indigo-100 text-indigo-700"
+                  ? "bg-primary/10 text-primary"
                   : section.type === "row house"
-                    ? "bg-purple-100 text-purple-700"
+                    ? "bg-primary/5 text-primary"
                     : "bg-gray-100 text-gray-700"
                   }`}
               >
@@ -139,7 +139,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <Link
           href={`/projects/${project._id}`}
-          className="block w-full py-2.5 text-center rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium hover:shadow-md transition-all"
+          className="block w-full py-2.5 text-center rounded-md bg-primary text-white font-medium hover:shadow-md transition-all"
         >
           View Details
         </Link>

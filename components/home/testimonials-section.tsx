@@ -87,10 +87,10 @@ export function TestimonialsSection() {
     <section className="py-20 bg-gradient-to-b from-white to-indigo-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
             What Our Clients Say
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Hear from our satisfied clients about their experience with our properties and services.
           </p>
@@ -114,7 +114,7 @@ export function TestimonialsSection() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
-                    <p className="text-sm text-indigo-600">{testimonial.position}</p>
+                    <p className="text-sm text-primary">{testimonial.position}</p>
                   </div>
                 </div>
                 <div className="flex mb-3">
@@ -133,14 +133,14 @@ export function TestimonialsSection() {
 
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md text-indigo-600 flex items-center justify-center z-10 hover:bg-indigo-50 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md text-primary flex items-center justify-center z-10 hover:bg-primary/5 transition-colors"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md text-indigo-600 flex items-center justify-center z-10 hover:bg-indigo-50 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md text-primary flex items-center justify-center z-10 hover:bg-primary/5 transition-colors"
             aria-label="Next testimonial"
           >
             <ChevronRight size={20} />
@@ -152,7 +152,7 @@ export function TestimonialsSection() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentIndex ? "bg-indigo-600 w-6" : "bg-gray-300"
+              className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentIndex ? "bg-primary w-6" : "bg-gray-300"
                 }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />

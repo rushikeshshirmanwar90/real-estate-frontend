@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-6">
-              <div className="h-10 w-10 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+              <div className="h-10 w-10 rounded-md bg-primary flex items-center justify-center">
                 <span className="text-white font-bold text-xl">RE</span>
               </div>
               <span className="text-xl font-bold text-white">RealEstate</span>
@@ -20,35 +20,35 @@ export function Footer() {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
               <a
                 href="#"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
                 aria-label="YouTube"
               >
                 <Youtube size={18} />
@@ -127,17 +127,17 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-6">Contact Info</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="mr-3 text-indigo-400 flex-shrink-0 mt-1" size={18} />
+                <MapPin className="mr-3 text-primary flex-shrink-0 mt-1" size={18} />
                 <span className="text-gray-400">
                   123 Real Estate Tower, Business District, Mumbai, Maharashtra 400001, India
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="mr-3 text-indigo-400 flex-shrink-0" size={18} />
+                <Phone className="mr-3 text-primary flex-shrink-0" size={18} />
                 <span className="text-gray-400">+91 98765 43210</span>
               </li>
               <li className="flex items-center">
-                <Mail className="mr-3 text-indigo-400 flex-shrink-0" size={18} />
+                <Mail className="mr-3 text-primary flex-shrink-0" size={18} />
                 <span className="text-gray-400">info@realestate.com</span>
               </li>
             </ul>

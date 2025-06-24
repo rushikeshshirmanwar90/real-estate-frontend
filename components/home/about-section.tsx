@@ -8,10 +8,10 @@ export function AboutSection() {
     <section id="about" className="py-20 bg-gradient-to-b from-white to-indigo-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
             About Our Company
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Building dreams and creating communities for over 15 years with a commitment to quality and innovation.
           </p>
@@ -20,7 +20,7 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-indigo-100 rounded-lg z-0"></div>
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-purple-100 rounded-lg z-0"></div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-lg z-0"></div>
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
               <Image
                 src={aboutUs}
@@ -42,7 +42,7 @@ export function AboutSection() {
 
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <CheckCircle className="text-indigo-600 mt-1 flex-shrink-0" size={20} />
+                <CheckCircle className="text-primary mt-1 flex-shrink-0" size={20} />
                 <div>
                   <h4 className="font-semibold text-gray-800">Quality Construction</h4>
                   <p className="text-gray-600">
@@ -52,7 +52,7 @@ export function AboutSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="text-indigo-600 mt-1 flex-shrink-0" size={20} />
+                <CheckCircle className="text-primary mt-1 flex-shrink-0" size={20} />
                 <div>
                   <h4 className="font-semibold text-gray-800">Innovative Design</h4>
                   <p className="text-gray-600">
@@ -62,7 +62,7 @@ export function AboutSection() {
               </div>
 
               <div className="flex items-start gap-3">
-                <CheckCircle className="text-indigo-600 mt-1 flex-shrink-0" size={20} />
+                <CheckCircle className="text-primary mt-1 flex-shrink-0" size={20} />
                 <div>
                   <h4 className="font-semibold text-gray-800">Customer Satisfaction</h4>
                   <p className="text-gray-600">

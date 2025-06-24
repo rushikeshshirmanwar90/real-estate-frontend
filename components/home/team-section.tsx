@@ -62,10 +62,10 @@ export function TeamSection() {
     <section id="team" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
             Meet Our Team
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Our talented professionals bring expertise, passion, and dedication to every project we undertake.
           </p>
@@ -87,33 +87,33 @@ export function TeamSection() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">{member.name}</h3>
-                <p className="text-indigo-600 font-medium mb-3">{member.position}</p>
+                <p className="text-primary font-medium mb-3">{member.position}</p>
                 <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
                 <div className="flex space-x-3">
                   <a
                     href={member.social.linkedin}
-                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
+                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
                     aria-label={`${member.name}'s LinkedIn`}
                   >
                     <Linkedin size={16} />
                   </a>
                   <a
                     href={member.social.twitter}
-                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
+                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
                     aria-label={`${member.name}'s Twitter`}
                   >
                     <Twitter size={16} />
                   </a>
                   <a
                     href={member.social.facebook}
-                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
+                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
                     aria-label={`${member.name}'s Facebook`}
                   >
                     <Facebook size={16} />
                   </a>
                   <a
                     href={`mailto:${member.social.email}`}
-                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors"
+                    className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
                     aria-label={`Email ${member.name}`}
                   >
                     <Mail size={16} />
