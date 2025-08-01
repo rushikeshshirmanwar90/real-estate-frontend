@@ -1,5 +1,7 @@
-import Link from "next/link"
 import { Building, Home, Landmark, ChevronRight } from "lucide-react"
+import TransitionLink from "@/utils/TransitionLink"
+import { motion, AnimatePresence, useInView } from "framer-motion"
+import { useRef } from "react"
 
 interface Section {
   type: "Buildings" | "row house" | "other"
@@ -47,29 +49,83 @@ export function SectionsList({ sections, projectId, projectName }: { sections?: 
     }
   }
 
-  console.log(sections);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.12
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.08,
+        staggerDirection: -1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 24, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 120,
+        damping: 24,
+        duration: 0.5
+      }
+    },
+    exit: {
+      y: -24,
+      opacity: 0,
+      transition: {
+        duration: 0.25
+      }
+    }
+  }
+
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {sections?.map((section) => (
-        <Link key={section.sectionId} href={getUrl(section.type, section.sectionId)}>
-          <div
-            className={`flex items-center justify-between rounded-xl bg-gradient-to-r ${getGradient(section.type)} p-4 shadow-sm transition-all duration-300 hover:shadow-md`}
+    <AnimatePresence mode="wait">
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        exit="exit"
+        variants={containerVariants}
+        className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {sections?.map((section) => (
+          <motion.div
+            key={section.sectionId}
+            variants={itemVariants}
           >
-            <div className="flex items-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
-                {getIcon(section.type)}
+            <TransitionLink className="h-full w-full" href={getUrl(section.type, section.sectionId)}>
+              <div
+                className={`flex items-center justify-between rounded-xl bg-gradient-to-r ${getGradient(section.type)} p-4 shadow-sm transition-all duration-300 hover:shadow-md`}
+              >
+                <div className="flex items-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
+                    {getIcon(section.type)}
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="font-medium text-gray-900">{section.name}</h3>
+                    <p className="text-sm text-gray-600 capitalize">{section.type.replace("-", " ")}</p>
+                  </div>
+                </div>
+                <ChevronRight className="h-5 w-5 text-gray-400" />
               </div>
-              <div className="ml-4">
-                <h3 className="font-medium text-gray-900">{section.name}</h3>
-                <p className="text-sm text-gray-600 capitalize">{section.type.replace("-", " ")}</p>
-              </div>
-            </div>
-            <ChevronRight className="h-5 w-5 text-gray-400" />
-          </div>
-        </Link>
-      ))}
-    </div>
+            </TransitionLink>
+          </motion.div>
+        ))}
+      </motion.div>
+    </AnimatePresence>
   )
 }
 

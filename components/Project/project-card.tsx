@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
+import TransitionLink from "@/utils/TransitionLink"
 
 type SectionType = {
   sectionId: string
@@ -137,12 +137,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
 
-        <Link
+        <TransitionLink
           href={`/projects/${project._id}`}
           className="block w-full py-2.5 text-center rounded-md bg-primary text-white font-medium hover:shadow-md transition-all"
         >
           View Details
-        </Link>
+        </TransitionLink>
       </div>
     </div>
   )

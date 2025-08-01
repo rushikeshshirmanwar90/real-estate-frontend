@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-
-import Link from "next/link"
 import Image from "next/image"
 import { useParams, useSearchParams } from "next/navigation"
 
@@ -14,6 +12,7 @@ import { BuildingAmenities } from "@/components/building/building-amenities"
 import { Building } from "@/types/Building"
 import { InterestForm } from "@/components/intrested-form"
 import { domain } from "@/domain"
+import TransitionLink from "@/utils/TransitionLink"
 
 const BuildingPage = () => {
 
@@ -53,12 +52,12 @@ const BuildingPage = () => {
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-teal-800 mb-4">Building Not Found</h1>
           <p className="text-gray-600 mb-6">The building you&#39;re looking for doesn&#39;t exist or has been removed.</p>
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors"
           >
             Return to Project
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     )
@@ -70,7 +69,7 @@ const BuildingPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-teal-50 to-cyan-50">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col mb-6">
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center mb-2 text-teal-700 hover:text-teal-900 transition-colors"
           >
@@ -82,7 +81,7 @@ const BuildingPage = () => {
               />
             </svg>
             Back to {projectName}
-          </Link>
+          </TransitionLink>
         </div>
 
         <BuildingDetails building={building} />

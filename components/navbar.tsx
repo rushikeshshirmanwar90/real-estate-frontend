@@ -5,16 +5,17 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import logo from "../public/logo.png"
+import TransitionLink from "@/utils/TransitionLink"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <TransitionLink href="/" className="flex items-center space-x-2">
             <Image src={logo} alt="Deshmuk Builders Logo" width={100} height={100} className="w-[10rem]" />
-          </Link>
+          </TransitionLink>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-800 hover:text-primary font-medium transition-colors">

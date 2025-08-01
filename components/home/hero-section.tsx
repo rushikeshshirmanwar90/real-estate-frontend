@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronRight } from "lucide-react"
+import Link from "next/link"
+import { motion } from "framer-motion"
 
 import img1 from "@/assets/banner images/img-1.jpg"
 import img2 from "@/assets/banner images/img-2.jpeg"
 import img3 from "@/assets/banner images/img-3.jpg"
-import Link from "next/link"
+
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -44,8 +46,25 @@ export function HeroSection() {
     return () => clearInterval(interval)
   }, [])
 
+
   return (
-    <section className="relative h-screen w-full overflow-hidden pt-16">
+    <motion.section
+      className="relative h-screen w-full overflow-hidden pt-16"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.8,
+            ease: [0.43, 0.13, 0.23, 0.96] // Using bezier curve values instead of string
+          }
+        }
+      }}
+    >
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
@@ -64,13 +83,35 @@ export function HeroSection() {
       ))}
 
       {/* Content */}
-      <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+      <motion.div
+        className="container mx-auto px-4 h-full flex items-center relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-3xl text-white">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in">
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
             {slides[currentSlide].title}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-[#E5E7EB]">{slides[currentSlide].subtitle}</p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl mb-8 text-[#E5E7EB]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.7 }}
+          >
+            {slides[currentSlide].subtitle}
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.7 }}
+          >
             <Link
               href={slides[currentSlide].buttonLink}
               className="px-8 py-3 rounded-md bg-primary text-white font-medium hover:shadow-lg transition-all text-center"
@@ -83,9 +124,9 @@ export function HeroSection() {
             >
               Contact Us <ChevronRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-10">
@@ -98,6 +139,6 @@ export function HeroSection() {
           />
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }

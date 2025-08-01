@@ -1,12 +1,12 @@
 "use client"
 
 import { useParams, useSearchParams } from "next/navigation"
-import Link from "next/link"
 import { OtherSection } from "@/types/Other";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { OtherSectionDetails } from "@/components/other-section-details";
 import { domain } from "@/domain";
+import TransitionLink from "@/utils/TransitionLink";
 
 const OtherSectionPage = () => {
 
@@ -48,12 +48,12 @@ const OtherSectionPage = () => {
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-emerald-800 mb-4">Section Not Found</h1>
           <p className="text-gray-600 mb-6">The section you&apos;re looking for doesn&apos;t exist or has been removed.</p>
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition-colors"
           >
             Return to Project
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     )
@@ -64,7 +64,7 @@ const OtherSectionPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-lime-50">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col mb-6">
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center mb-2 text-emerald-700 hover:text-emerald-900 transition-colors"
           >
@@ -76,7 +76,7 @@ const OtherSectionPage = () => {
               />
             </svg>
             Back to {projectName}
-          </Link>
+          </TransitionLink>
         </div>
 
         <OtherSectionDetails otherSection={otherSection} />

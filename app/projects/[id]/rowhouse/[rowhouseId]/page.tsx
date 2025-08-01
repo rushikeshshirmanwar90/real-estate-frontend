@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useParams, useSearchParams } from "next/navigation"
 import axios from "axios"
 
@@ -10,6 +9,7 @@ import { RowHouse } from "@/types/RowHouse"
 import { useCallback, useEffect, useState } from "react"
 import { domain } from "@/domain"
 import { InterestForm } from "@/components/intrested-form"
+import TransitionLink from "@/utils/TransitionLink"
 
 const RowHousePage = () => {
 
@@ -48,12 +48,12 @@ const RowHousePage = () => {
         <div className="text-center p-8 bg-white rounded-xl shadow-lg">
           <h1 className="text-2xl font-bold text-amber-800 mb-4">Row House Not Found</h1>
           <p className="text-gray-600 mb-6">The row house you&#39;re looking for doesn&#39;t exist or has been removed.</p>
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors"
           >
             Return to Project
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     )
@@ -64,7 +64,7 @@ const RowHousePage = () => {
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col mb-6">
-          <Link
+          <TransitionLink
             href={`/projects/${params.id}`}
             className="inline-flex items-center mb-2 text-amber-700 hover:text-amber-900 transition-colors"
           >
@@ -76,7 +76,7 @@ const RowHousePage = () => {
               />
             </svg>
             Back to {projectName}
-          </Link>
+          </TransitionLink>
         </div>
 
         <RowHouseDetails rowHouse={rowHouse} />

@@ -56,7 +56,7 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const,
+        type: "spring" as const, // Fixed: added 'as const'
         stiffness: 180, // faster spring
         damping: 18
       }
@@ -88,7 +88,7 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
       scale: 1,
       opacity: 1,
       transition: {
-        type: "spring" as const,
+        type: "spring" as const, // Fixed: added 'as const'
         stiffness: 250, // snappier
         damping: 18
       }
@@ -108,6 +108,7 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
       }
     }
   }
+
   return (
     <Tabs defaultValue={flatInfo[0]?.title} value={selectedTab} onValueChange={setSelectedTab}>
       <TabsList className="mb-6 grid w-full grid-cols-1 md:grid-cols-3">
@@ -187,7 +188,7 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{
-                            type: "spring",
+                            type: "spring" as const, // Fixed: added 'as const'
                             stiffness: 350,
                             damping: 18,
                             delay: 0.2 // less delay
@@ -212,7 +213,7 @@ export function FlatInfo({ flatInfo }: { flatInfo: FlatInfo[] | undefined }) {
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{
-                            type: "spring",
+                            type: "spring" as const, // Fixed: added 'as const'
                             stiffness: 350,
                             damping: 18,
                             delay: 0.25 // less delay

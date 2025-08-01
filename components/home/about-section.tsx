@@ -1,6 +1,5 @@
 import Image from "next/image"
 import { CheckCircle } from "lucide-react"
-
 import aboutUs from "@/assets/about us.jpeg"
 
 export function AboutSection() {
@@ -77,4 +76,3 @@ export function AboutSection() {
     </section>
   )
 }
-
