@@ -33,11 +33,7 @@ export function ProjectsSection() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const { data } = await axios.get(`${domain}/api/project`, {
-          params: {
-            clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-          },
-        })
+        const { data } = await axios.get(`${domain}/api/project?clientId=${process.env.NEXT_PUBLIC_CLIENT_ID}`)
         setProjects(data)
       } catch (error) {
         console.error("Error fetching projects:", error)
@@ -63,9 +59,8 @@ export function ProjectsSection() {
     <section ref={sectionRef} id="projects" className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Real Estate Projects</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6 transform transition-all duration-700 delay-300 scale-x-0 animate-[scaleX_0.7s_0.3s_ease-out_forwards]"></div>
@@ -76,20 +71,18 @@ export function ProjectsSection() {
         </div>
 
         <div
-          className={`flex justify-center mb-10 transition-all duration-800 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
+          className={`flex justify-center mb-10 transition-all duration-800 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+            }`}
         >
           <div className="inline-flex bg-gray-100 rounded-lg p-1 shadow-lg">
             {["all", "ongoing", "completed", "upcoming"].map((filterType, index) => (
               <button
                 key={filterType}
                 onClick={() => handleFilterChange(filterType)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-                  filter === filterType
-                    ? "bg-primary text-white shadow-lg scale-105"
-                    : "text-gray-700 hover:bg-gray-200 hover:shadow-md"
-                }`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105 ${filter === filterType
+                  ? "bg-primary text-white shadow-lg scale-105"
+                  : "text-gray-700 hover:bg-gray-200 hover:shadow-md"
+                  }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {filterType === "all" ? "All Projects" : filterType.charAt(0).toUpperCase() + filterType.slice(1)}
@@ -103,9 +96,8 @@ export function ProjectsSection() {
             filteredProjects.map((project, index) => (
               <div
                 key={project._id}
-                className={`transform transition-all duration-700 hover:scale-105 ${
-                  animateCards && isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
+                className={`transform transition-all duration-700 hover:scale-105 ${animateCards && isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  }`}
                 style={{
                   transitionDelay: `${index * 150 + 200}ms`,
                   animationDelay: `${index * 150 + 200}ms`,
@@ -116,9 +108,8 @@ export function ProjectsSection() {
             ))
           ) : (
             <div
-              className={`col-span-full flex flex-col items-center justify-center py-16 transition-all duration-1000 ${
-                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`col-span-full flex flex-col items-center justify-center py-16 transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
             >
               <div className="animate-bounce mb-4">
                 <span className="text-6xl">🚧</span>
